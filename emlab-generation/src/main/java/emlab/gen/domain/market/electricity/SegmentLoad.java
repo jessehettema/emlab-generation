@@ -32,6 +32,10 @@ public class SegmentLoad {
 
     private double currentLoad;
 
+    private double[] demandElasticityTimeSeries;
+
+    private double referencePriceForElasticity;
+
     public Segment getSegment() {
         return segment;
     }
@@ -56,7 +60,6 @@ public class SegmentLoad {
         this.baseLoad = baseLoad;
     }
 
-
     public double getCurrentLoad() {
         return currentLoad;
     }
@@ -68,6 +71,22 @@ public class SegmentLoad {
     @Override
     public String toString() {
         return "segment: " + segment + " load: " + getBaseLoad();
+    }
+
+    public void setDemandElasticityTimeSeries(double[] demandElasticityTimeSeries) {
+        this.demandElasticityTimeSeries = demandElasticityTimeSeries;
+    }
+
+    public double[] getDemandElasticityTimeSeries() {
+        return demandElasticityTimeSeries;
+    }
+
+    public void setReferencePriceForElasticity(double referencePriceForElasticity) {
+        this.referencePriceForElasticity = referencePriceForElasticity;
+    }
+
+    public double getReferencePriceForElasticity() {
+        return referencePriceForElasticity;
     }
 
 }
