@@ -248,6 +248,7 @@ public class ClearIterativeCO2AndElectricitySpotMarketTwoCountryRole
                 // segment, government, clearingTick, forecast,
                 // demandGrowthMap);
                 // }
+                logger.warn("co2SecantSearch.co2Price is {}", co2SecantSearch.co2Price);
                 clearOneOrTwoConnectedElectricityMarketsAtAGivenCO2PriceForSegments(government, clearingTick, forecast,
                         demandGrowthMap, fuelPriceMap, co2SecantSearch.co2Price, nationalMinCo2Prices, segments,
                         interconnector, model);
@@ -316,11 +317,17 @@ public class ClearIterativeCO2AndElectricitySpotMarketTwoCountryRole
                 originalDemandForSpotMarkets);
         globalOutcome.globalDemandIntersectForElasticity = determineTotalLoadFromLoadMap(
                 globalOutcome.demandIntersectsForElasticity);
-                // end of 1st part of adjusted code
+
+        logger.warn("oldLoadValue: {},globalDemandSlopeForElasticity: {}", globalOutcome.globalLoad,
+                globalOutcome.globalDemandSlopeForElasticity);
+        logger.warn("globalDemandIntersectForElasticity: {}", globalOutcome.globalDemandIntersectForElasticity);
+
+        // end of 1st part of adjusted code
 
         // empty list of plants that are supplying.
         double marginalPlantMarginalCost = clearGlobalMarketWithNoCapacityConstraints(segment, globalOutcome, forecast,
                 clearingTick);
+        logger.warn("newGlobalLoad: {}, globalprice: {}", globalOutcome.globalLoad, marginalPlantMarginalCost);
 
         // For each plant in the cost-ordered list
         // Determine the flow over the interconnector.
@@ -752,6 +759,7 @@ public class ClearIterativeCO2AndElectricitySpotMarketTwoCountryRole
         do {
 
             previousAdjustedFundamentalCO2Price = adjustedFundamentalCO2Price;
+            logger.warn("co2SecantSearch.co2Price is {}", co2SecantSearch.co2Price);
 
             clearOneOrTwoConnectedElectricityMarketsAtAGivenCO2PriceForSegments(government, clearingTick, forecast,
                     demandGrowthMap, fuelPriceMap, adjustedFundamentalCO2Price, nationalMinCo2Prices, segments,

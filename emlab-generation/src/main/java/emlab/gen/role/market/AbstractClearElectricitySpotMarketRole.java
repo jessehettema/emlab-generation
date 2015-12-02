@@ -829,7 +829,8 @@ public abstract class AbstractClearElectricitySpotMarketRole<T extends Decarboni
 
             demandIntersectForElasticityInMarkets.put(market, demandIntersectForElasticityThisYear);
         }
-        logger.warn("demandIntersectForElasticityInMarkets is {}", demandIntersectForElasticityInMarkets);
+        // logger.warn("demandIntersectForElasticityInMarkets is {}",
+        // demandIntersectForElasticityInMarkets);
 
         return demandIntersectForElasticityInMarkets;
     }

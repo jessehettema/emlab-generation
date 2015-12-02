@@ -319,8 +319,10 @@ public class InvestInPowerGenerationTechnologiesRole<T extends EnergyProducer> e
                      */
 
                     if (projectValue > 0 && projectValue / plant.getActualNominalCapacity() > highestValue) {
+
                         highestValue = projectValue / plant.getActualNominalCapacity();
                         bestTechnology = plant.getTechnology();
+                        logger.warn("standardized value {} in technology {}", highestValue, bestTechnology);
                     }
                 }
 
@@ -328,8 +330,7 @@ public class InvestInPowerGenerationTechnologiesRole<T extends EnergyProducer> e
         }
 
         if (bestTechnology != null) {
-            // logger.warn("Agent {} invested in technology {} at tick " +
-            // getCurrentTick(), agent, bestTechnology);
+            logger.warn("Agent {} invested in technology {} at tick " + getCurrentTick(), agent, bestTechnology);
 
             PowerPlant plant = new PowerPlant();
             plant.specifyAndPersist(getCurrentTick(), agent, getNodeForZone(market.getZone()), bestTechnology);
@@ -595,7 +596,8 @@ public class InvestInPowerGenerationTechnologiesRole<T extends EnergyProducer> e
                 }
 
             }
-            logger.warn("new maxExpectedLoad for flexible demand is {}", maxExpectedLoad);
+            // logger.warn("new maxExpectedLoad for flexible demand is {}",
+            // maxExpectedLoad);
             // logger.warn(
             // "check baseload use:
             // emlab-generation/src/main/java/emlab/gen/role/investment/InvestInPowerGenerationTechnologiesRole.java");
